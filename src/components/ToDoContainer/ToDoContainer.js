@@ -4,6 +4,7 @@ import { useState } from "react";
 import "./ToDoContainer.css";
 import { ToDosContext } from "../../context/ToDosContext";
 import ToDoItem from "../ToDoItem/ToDoItem";
+import ToDoForm from "../ToDoForm/ToDoForm";
 
 const ToDoContainer = () => {
   const [todos, setTodos] = useContext(ToDosContext);
@@ -50,17 +51,20 @@ const ToDoContainer = () => {
     setTodos([...newState]);
   };
 
+  const resetTodos = (todoId) => {
+    setTodos((prev) =>
+      prev.map((todo) => {
+        return { ...todo, isDone: false };
+      })
+    );
+  };
+
   const sortedTodos = todos.sort(function (x, y) {
     return x.isDone === y.isDone ? 0 : x.isDone ? -1 : 1;
   });
-
   return (
     <div className="todo-container">
-      <p>todo container</p>
-      <form onSubmit={handleSubmit}>
-        <input value={inputValue} onChange={handleChange} name="todoinput" />
-        <button type="submit">Add</button>
-      </form>
+      <ToDoForm resetTodos={resetTodos} />
       {sortedTodos.map((todo) => (
         <ToDoItem
           toggleTodoHanler={toggleTodo}
