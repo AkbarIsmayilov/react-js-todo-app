@@ -3,3 +3,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+.icon {
+  width: 20px;
+  height: 20px
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+}
