@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./ToDoItem.css";
+
 import TrashIcon from "../../images/trash.png";
 import EditIcon from "../../images/pencil.png";
 import Done from "../../images/done.png";
@@ -14,7 +15,7 @@ const ToDoItem = ({
 
   return (
     <div className="todo-item-container">
-      <p>{body}</p>
+      <p className="decribtion">{body}</p>
 
       <div className="toolbar">
         <div onClick={() => deleteTodoHandler(id)}>

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
-import { ToDosContext } from "../../context/ToDosContext";
 
+import { ToDosContext } from "../../context/ToDosContext";
+import "./ToDoForm.css";
 const ToDoForm = ({ resetTodos }) => {
   const [todos, setTodos] = useContext(ToDosContext);
 
@@ -25,11 +26,24 @@ const ToDoForm = ({ resetTodos }) => {
   };
 
   return (
-    <div>
-      <p>todo container</p> <button onClick={resetTodos}>reset </button>
-      <form onSubmit={handleSubmit}>
-        <input value={inputValue} onChange={handleChange} name="todoinput" />
-        <button type="submit">Add</button>
+    <div className="form-container">
+      <div className="form-header">
+        <h1 className="app-title">ToDo Application </h1>
+        <button className="primary-button" onClick={resetTodos}>
+          Reset{" "}
+        </button>
+      </div>
+      <form className="form" onSubmit={handleSubmit}>
+        <input
+          className="form-input"
+          placeholder="add todo..."
+          value={inputValue}
+          onChange={handleChange}
+          name="todoinput"
+        />
+        <button className="primary-button2" type="submit">
+          Add
+        </button>
       </form>
     </div>
   );
