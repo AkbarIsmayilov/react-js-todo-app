@@ -14,7 +14,11 @@ const ToDoForm = ({ resetTodos }) => {
     if (inputValue.trim() !== "") {
       setTodos((prev) => [
         ...prev,
-        { body: inputValue, id: prev.length, isDone: false },
+        {
+          body: inputValue,
+          id: `${Math.random()}${Date.now()}`,
+          isDone: false,
+        },
       ]);
       setInputValue("");
     }
