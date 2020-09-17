@@ -5,13 +5,16 @@ import TrashIcon from "../../images/trash.png";
 import EditIcon from "../../images/pencil.png";
 import Done from "../../images/done.png";
 import Undone from "../../images/undone.png";
+import { useContext } from "react";
+import { EditContext } from "../../context/EditContext";
 
 const ToDoItem = ({
   todo: { body, id, isDone },
   deleteTodoHandler,
   toggleTodoHanler,
+  editTodoTrigger,
 }) => {
-  const [isEditMode, setIsEditMode] = useState(false);
+  const [itemToBeEdit, setItemToBeEdit] = useContext(EditContext);
 
   return (
     <div className="todo-item-container">
@@ -22,7 +25,12 @@ const ToDoItem = ({
           <img className="icon" src={TrashIcon} alt="Delete " />
         </div>
 
-        <div>
+        <div
+          onClick={() => {
+            setItemToBeEdit(id);
+            console.log(itemToBeEdit, "sdssdsd");
+          }}
+        >
           <img className="icon" src={EditIcon} alt="Edit " />
         </div>
         <div onClick={() => toggleTodoHanler(id)}>
